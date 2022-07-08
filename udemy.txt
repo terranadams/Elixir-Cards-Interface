@@ -1,0 +1,5 @@
+https://github.com/StephenGrider/ElixirCode
+The best way to learn a new programming language is to start writing code as soon as possible
+
+To generate an elixir project with 'mix':  mix new cards
+Mix is a commandline tool given by elixir, used to generate projects, compile projects, run tasks (like running tests) and managing dependencies. 
