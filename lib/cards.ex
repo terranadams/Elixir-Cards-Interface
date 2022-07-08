@@ -1,4 +1,12 @@
 defmodule Cards do
+#exdoc generates an html file for us to read all of our documentation. In the commandline, use 'mix docs', location  cards/doc/index.html
+  @moduledoc """
+    Provides methods for creating and handling a deck of cards
+  """
+
+  @doc """
+  Just says "Hi there!"
+  """
   def hello do
     "Hi there!"
     # in commandl line: iex -S mix (if we use this instead of just 'iex', then our module is compiled and included in the elixir interactive shell)
@@ -7,7 +15,9 @@ defmodule Cards do
   end
 
 
-
+  @doc """
+    Returns a list of strings representing a deck of playing cards
+  """
   def create_deck do
     values = ["Ace", "Two", "Three", "Four", "Five"]
     suits = ["Spades", "Clubs", "Hearts", "Diamonds"]
@@ -26,6 +36,10 @@ defmodule Cards do
   # the above needs to be outside the module at the bottom to work
 
 
+
+  @doc """
+    Shuffles the deck, of course
+  """
   def shuffle(deck) do
     Enum.shuffle(deck)
     # iex: 'deck = Cards.create_deck' > enter > 'Cards.shuffle(deck)' > output
@@ -33,12 +47,27 @@ defmodule Cards do
 
 
 
+
+ @doc """
+    Determines whether a deck contains a given card
+  """
   def contains?(deck, card) do
     # adding a ? mark to a method name is convention that the method returns a boolean. The ? mark does nothing to the method
     Enum.member?(deck, card)
   end
 
 
+
+  @doc """
+    Divides a deck into a hand and the remainder of the deck.
+    The `hand_size` argument indicates how many cards should
+    be in the hand.
+  ## Examples
+      iex> deck = Cards.create_deck
+      iex> {hand, deck} = Cards.deal(deck, 1)
+      iex> hand
+      ["Ace of Spades"]
+  """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size) # returns a tuple with two values {the hand is index 0, the remainder of the deck is index 1}, these can get destructured to their own variables
   end
@@ -49,6 +78,9 @@ defmodule Cards do
 
 
 
+  @doc """
+    Saves the deck into a new file
+  """
   def save deck, filename do # this is shorthand syntax, but can look confusing without the parenthesis
     binary = :erlang.term_to_binary(deck) # we are invoking erlang code. The purpose of this line is to take the deck argument and turn it into an object that can be actually saved to the file system (not literal binary)
     File.write(filename, binary) #after we encode the file into a variable, we pass it to File.write
@@ -72,7 +104,7 @@ defmodule Cards do
   end
 
 
-  
+
 end
 
 
