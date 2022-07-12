@@ -50,6 +50,13 @@ defmodule Cards do
 
  @doc """
     Determines whether a deck contains a given card
+
+  ## Examples
+
+      iex> deck = Cards.create_deck
+      iex> Cards.contains?(deck, "Ace of Spades")
+      true
+
   """
   def contains?(deck, card) do
     # adding a ? mark to a method name is convention that the method returns a boolean. The ? mark does nothing to the method
